@@ -4,11 +4,50 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Light mode colors */
+    --bg-gradient-start: #667eea;
+    --bg-gradient-end: #764ba2;
+    --text-primary: #333;
+    --text-secondary: #4a5568;
+    --text-tertiary: #718096;
+    --text-muted: #a0aec0;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-bg-solid: #ffffff;
+    --upload-bg: rgba(255, 255, 255, 0.9);
+    --border-color: #cbd5e0;
+    --modal-info-bg: #f7fafc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color-hover: rgba(0, 0, 0, 0.2);
+    --close-color: #aaa;
+    --close-hover-color: #000;
+}
+
+body.dark-mode {
+    /* Dark mode colors */
+    --bg-gradient-start: #1a202c;
+    --bg-gradient-end: #2d3748;
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e0;
+    --text-tertiary: #a0aec0;
+    --text-muted: #718096;
+    --card-bg: rgba(45, 55, 72, 0.95);
+    --card-bg-solid: #2d3748;
+    --upload-bg: rgba(45, 55, 72, 0.9);
+    --border-color: #4a5568;
+    --modal-info-bg: #1a202c;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-color-hover: rgba(0, 0, 0, 0.5);
+    --close-color: #a0aec0;
+    --close-hover-color: #e2e8f0;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
-    color: #333;
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -20,21 +59,51 @@ body {
 header {
     text-align: center;
     margin-bottom: 40px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px var(--shadow-color);
+    position: relative;
 }
 
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 header p {
     font-size: 1.2rem;
-    color: #718096;
+    color: var(--text-tertiary);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px) rotate(15deg);
+    box-shadow: 0 6px 20px var(--shadow-color-hover);
+}
+
+.theme-toggle:active {
+    transform: translateY(0) rotate(0deg);
 }
 
 /* Upload Section Styles */
@@ -43,11 +112,11 @@ header p {
 }
 
 .upload-area {
-    border: 2px dashed #cbd5e0;
+    border: 2px dashed var(--border-color);
     border-radius: 15px;
     padding: 60px 20px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--upload-bg);
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -55,7 +124,7 @@ header p {
 .upload-area:hover,
 .upload-area.drag-over {
     border-color: #667eea;
-    background: rgba(255, 255, 255, 1);
+    background: var(--card-bg);
     transform: translateY(-2px);
 }
 
@@ -73,12 +142,12 @@ header p {
 
 .upload-area p {
     font-size: 1.1rem;
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .or-text {
     font-size: 0.9rem;
-    color: #a0aec0;
+    color: var(--text-muted);
     margin: 5px 0;
 }
 
@@ -99,21 +168,21 @@ header p {
 
 /* Gallery Section Styles */
 .gallery-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-bg);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px var(--shadow-color);
 }
 
 .gallery-section h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .photo-count {
     font-size: 1rem;
-    color: #718096;
+    color: var(--text-tertiary);
     margin-bottom: 25px;
 }
 
@@ -127,15 +196,15 @@ header p {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px var(--shadow-color);
     transition: transform 0.3s ease;
     cursor: pointer;
-    background: white;
+    background: var(--card-bg-solid);
 }
 
 .photo-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px var(--shadow-color-hover);
 }
 
 .photo-item img {
@@ -150,7 +219,7 @@ header p {
 
 .photo-info h3 {
     font-size: 0.9rem;
-    color: #4a5568;
+    color: var(--text-secondary);
     margin-bottom: 5px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -159,7 +228,7 @@ header p {
 
 .photo-info p {
     font-size: 0.8rem;
-    color: #a0aec0;
+    color: var(--text-muted);
 }
 
 /* Modal Styles */
@@ -181,7 +250,7 @@ header p {
     padding: 20px;
     width: 90%;
     max-width: 800px;
-    background: white;
+    background: var(--card-bg-solid);
     border-radius: 15px;
     text-align: center;
 }
@@ -190,7 +259,7 @@ header p {
     position: absolute;
     top: 15px;
     right: 25px;
-    color: #aaa;
+    color: var(--close-color);
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -198,7 +267,7 @@ header p {
 }
 
 .close:hover {
-    color: #000;
+    color: var(--close-hover-color);
 }
 
 #modalImage {
@@ -211,7 +280,7 @@ header p {
 
 .modal-info {
     text-align: left;
-    background: #f7fafc;
+    background: var(--modal-info-bg);
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
@@ -219,7 +288,7 @@ header p {
 
 .modal-info p {
     margin-bottom: 10px;
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .delete-btn {
@@ -271,7 +340,7 @@ header p {
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #a0aec0;
+    color: var(--text-muted);
 }
 
 .empty-state p {

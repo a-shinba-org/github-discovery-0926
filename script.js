@@ -2,10 +2,12 @@ class PhotoSharingApp {
     constructor() {
         this.photos = JSON.parse(localStorage.getItem('photos')) || [];
         this.currentPhotoIndex = -1;
+        this.theme = localStorage.getItem('theme') || 'light';
         this.init();
     }
 
     init() {
+        this.applyTheme();
         this.setupEventListeners();
         this.renderGallery();
         this.updatePhotoCount();
@@ -17,6 +19,10 @@ class PhotoSharingApp {
         const modal = document.getElementById('photoModal');
         const closeModal = document.getElementById('closeModal');
         const deletePhoto = document.getElementById('deletePhoto');
+        const themeToggle = document.getElementById('themeToggle');
+
+        // Theme toggle
+        themeToggle.addEventListener('click', () => this.toggleTheme());
 
         // File input change
         fileInput.addEventListener('change', (e) => {
@@ -45,6 +51,23 @@ class PhotoSharingApp {
                 if (e.key === 'Delete') this.deleteCurrentPhoto();
             }
         });
+    }
+
+    applyTheme() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (this.theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            if (themeToggle) themeToggle.textContent = '☀️';
+        } else {
+            document.body.classList.remove('dark-mode');
+            if (themeToggle) themeToggle.textContent = '🌙';
+        }
+    }
+
+    toggleTheme() {
+        this.theme = this.theme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('theme', this.theme);
+        this.applyTheme();
     }
 
     handleDragOver(e) {
