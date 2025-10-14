@@ -59,13 +59,13 @@ class PhotoSharingApp {
             document.body.classList.add('dark-mode');
             if (themeToggle) {
                 themeToggle.textContent = '☀️';
-                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                themeToggle.setAttribute('aria-label', 'ライトモードに切り替え');
             }
         } else {
             document.body.classList.remove('dark-mode');
             if (themeToggle) {
                 themeToggle.textContent = '🌙';
-                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                themeToggle.setAttribute('aria-label', 'ダークモードに切り替え');
             }
         }
     }
