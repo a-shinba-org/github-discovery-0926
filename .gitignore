@@ -1,0 +1,38 @@
+# Temporary files and directories
+/tmp/
+*.tmp
+*.temp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Node.js dependencies (if added later)
+node_modules/
+package-lock.json
+
+# Optional: Python cache (if added later)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Backup files
+*.backup
+*.bak
+
+# Test files (exclude test images we created)
+/test-images/

@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #718096;
+}
+
+/* Upload Section Styles */
+.upload-section {
+    margin-bottom: 40px;
+}
+
+.upload-area {
+    border: 2px dashed #cbd5e0;
+    border-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    opacity: 0.6;
+}
+
+.upload-area p {
+    font-size: 1.1rem;
+    color: #4a5568;
+}
+
+.or-text {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    margin: 5px 0;
+}
+
+.upload-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Gallery Section Styles */
+.gallery-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #4a5568;
+}
+
+.photo-count {
+    font-size: 1rem;
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.photo-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background: white;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.photo-info {
+    padding: 15px;
+}
+
+.photo-info h3 {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.photo-info p {
+    font-size: 0.8rem;
+    color: #a0aec0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #000;
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-info {
+    text-align: left;
+    background: #f7fafc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.modal-info p {
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+.delete-btn {
+    background: #e53e3e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+    margin-top: 15px;
+}
+
+.delete-btn:hover {
+    background: #c53030;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .upload-area {
+        padding: 40px 15px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #a0aec0;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.empty-state .emoji {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}

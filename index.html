@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真共有アプリ - Photo Sharing App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📸 写真共有アプリ</h1>
+            <p>写真をアップロードして共有しましょう</p>
+        </header>
+
+        <main>
+            <!-- Photo Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="upload-icon">📷</i>
+                        <p>写真をここにドラッグ＆ドロップ</p>
+                        <p class="or-text">または</p>
+                        <label for="fileInput" class="upload-btn">ファイルを選択</label>
+                        <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Photo Gallery Section -->
+            <section class="gallery-section">
+                <h2>フォトギャラリー</h2>
+                <div class="photo-count">
+                    <span id="photoCount">0</span> 枚の写真
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Photos will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Photo Modal -->
+        <div class="modal" id="photoModal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <img id="modalImage" src="" alt="">
+                <div class="modal-info">
+                    <p id="modalFileName"></p>
+                    <p id="modalFileSize"></p>
+                    <p id="modalUploadDate"></p>
+                    <button class="delete-btn" id="deletePhoto">写真を削除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
